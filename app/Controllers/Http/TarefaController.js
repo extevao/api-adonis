@@ -3,23 +3,8 @@
 const Tarefa = use("App/Models/Tarefa");
 const Database = use('Database')
 
-/** @typedef {import('@adonisjs/framework/src/Request')} Request */
-/** @typedef {import('@adonisjs/framework/src/Response')} Response */
-/** @typedef {import('@adonisjs/framework/src/View')} View */
-
-/**
- * Resourceful controller for interacting with tarefas
- */
 class TarefaController {
-    /**
-     * Show a list of all tarefas.
-     * GET tarefas
-     *
-     * @param {object} ctx
-     * @param {Request} ctx.request
-     * @param {Response} ctx.response
-     * @param {View} ctx.view
-     */
+
     async index({ request, response, auth }) {
         // const tarefas = await Tarefa.all()
         // const tarefas = await Tarefa.query().where('user_id', auth.user.id).fetch()
@@ -35,14 +20,6 @@ class TarefaController {
         return tarefas
     }
 
-    /**
-     * Create/save a new tarefa.
-     * POST tarefas
-     *
-     * @param {object} ctx
-     * @param {Request} ctx.request
-     * @param {Response} ctx.response
-     */
     async store({ request, response, auth }) {
         const { id } = auth.user;
         const data = request.only(["titulo", "descricao"]);
@@ -51,15 +28,6 @@ class TarefaController {
         return tarefa;
     }
 
-    /**
-     * Display a single tarefa.
-     * GET tarefas/:id
-     *
-     * @param {object} ctx
-     * @param {Request} ctx.request
-     * @param {Response} ctx.response
-     * @param {View} ctx.view
-     */
     async show({ params, request, response, auth }) {
         const tarefa = await Tarefa.query().where('id', params.id).where('user_id', '=', auth.user.id).first()
 
@@ -72,14 +40,6 @@ class TarefaController {
         return tarefa
     }
 
-    /**
-     * Update tarefa details.
-     * PUT or PATCH tarefas/:id
-     *
-     * @param {object} ctx
-     * @param {Request} ctx.request
-     * @param {Response} ctx.response
-     */
     async update({ params, request, response, auth }) {
         const { titulo, descricao } = request.all()
 
@@ -98,14 +58,6 @@ class TarefaController {
         return tarefa
     }
 
-    /**
-     * Delete a tarefa with id.
-     * DELETE tarefas/:id
-     *
-     * @param {object} ctx
-     * @param {Request} ctx.request
-     * @param {Response} ctx.response
-     */
     async destroy({ params, request, response, auth }) {
         const tarefa = await Tarefa.query().where('id', params.id).where('user_id', '=', auth.user.id).first()
 
