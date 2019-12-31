@@ -6,10 +6,11 @@ class TecnologiaController {
 
   async index ({ response, request }) {
       try {
-          const tecnologias = await Tecnologia.query().paginate(request.get())
+          const paginate = request.get()
 
-          console.log( request.get() )
-
+          const tecnologias = await Tecnologia
+            .query()
+            .paginate(paginate.page, paginate.perPage)
 
           return tecnologias
       } catch (err) {
