@@ -67,7 +67,14 @@ class InstaluraController {
 
     async store({ request, response }) {}
 
-    async show({ params, request, response, view }) {}
+    async show({ params, request, response }) {
+        try {
+            return posts;
+        } catch (err) {
+            console.error(err);
+            return response.status(500).send({ error: err.message });
+        }
+    }
 
     async update({ params, request, response }) {}
 

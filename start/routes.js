@@ -30,5 +30,6 @@ Route.resource('tecnologia', 'TecnologiaController').apiOnly()
 
 Route.group(() => {
     Route.get('/', 'InstaluraController.index')
+    Route.get('/:idPerfil', 'InstaluraController.show')
     Route.post('/login', 'InstaluraController.login')
 }).prefix('instalura')
