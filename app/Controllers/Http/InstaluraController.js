@@ -56,6 +56,15 @@ class InstaluraController {
         }
     }
 
+    async login({ request, response }) {
+        const credentials = request.all()
+
+        if (!credentials.login && !credentials.senha)
+            return response.status(401).send({ error: 'Erro login' })
+
+        return 'TOKEN'
+    }
+
     async store({ request, response }) {}
 
     async show({ params, request, response, view }) {}
