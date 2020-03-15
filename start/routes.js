@@ -32,4 +32,8 @@ Route.group(() => {
     Route.get('/', 'InstaluraController.index')
     Route.get('/:idPerfil', 'InstaluraController.show')
     Route.post('/login', 'InstaluraController.login')
+    Route.post('/post/:idPost/like', 'InstaluraController.like')
 }).prefix('instalura')
+
+Route.resource('post', 'PostController').apiOnly()
+

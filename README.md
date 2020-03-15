@@ -35,5 +35,5 @@ adonis migration:run
 ##crirar controller
     adonis make:controller User --type http
 
-##crirar model e controller
+##crirar migration model e controller
     adonis make:model tarefa -m -c

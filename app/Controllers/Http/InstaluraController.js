@@ -65,6 +65,10 @@ class InstaluraController {
         return 'TOKEN'
     }
 
+    async like({ request, response }) {
+        return { login: 'login que eu nao tenho!!!' }
+    }
+
     async store({ request, response }) {}
 
     async show({ params, request, response }) {
